@@ -595,9 +595,3 @@ Hallucination Risk =
 
 ---
 
-## 🤝 Contributing
-
-This is a submission for BeyondChats internship. The code is provided as-is for evaluation purposes.
-
----
-
