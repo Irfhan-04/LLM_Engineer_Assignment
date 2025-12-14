@@ -27,7 +27,7 @@ class Config:
     MAX_HALLUCINATION_RISK: float = 0.4
     
     # Batch processing
-    BATCH_SIZE: int = 8
+    BATCH_SIZE: int = 32
     MAX_WORKERS: int = 4
     
     # Caching (for scale optimization)

@@ -138,10 +138,14 @@ def test_pipeline():
         print(f"  Risk: {result['hallucination']['hallucination_risk']:.3f}")
         print(f"  Assessment: {result['hallucination']['assessment']}")
         print(f"\nPerformance:")
-        print(f"  Latency: {result['performance']['latency_ms']:.2f}ms")
-        print(f"  Cost: ${result['performance']['estimated_cost_usd']:.6f}")
+        if result['performance'].get('generation_latency_ms'):
+            print(f"  Generation Latency: {result['performance']['generation_latency_ms']:.2f}ms")
+        else:
+            print(f"  Generation Latency: Not available in metadata")
+        print(f"  Estimated Cost: ${result['performance']['estimated_generation_cost_usd']:.6f}")
+        print(f"  Evaluation Time: {result['performance']['evaluation_latency_ms']:.2f}ms")
         print("="*60)
-        
+                
         # Save results
         with open("test_results.json", "w") as f:
             json.dump(result, f, indent=2)
