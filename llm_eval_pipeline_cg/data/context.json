@@ -1,0 +1,10 @@
+{
+  "query": "What is machine learning?",
+  "contexts": [
+    {
+      "id": "doc1",
+      "text": "Machine learning is a subset of artificial intelligence that focuses on learning patterns from data.",
+      "score": 0.92
+    }
+  ]
+}

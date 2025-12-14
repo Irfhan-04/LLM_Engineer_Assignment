@@ -1,0 +1,19 @@
+{
+  "message_id": "msg_002",
+  "conversation_id": "conv_001",
+  "query": "What are the key benefits of machine learning in healthcare?",
+  "vectors": [
+    {
+      "id": "vec_001",
+      "source": "medical_database",
+      "summary": "Machine learning enables early disease detection and diagnosis improvement",
+      "relevance_score": 0.92
+    },
+    {
+      "id": "vec_002",
+      "source": "research_paper",
+      "summary": "ML accelerates drug discovery and personalized medicine",
+      "relevance_score": 0.88
+    }
+  ]
+}

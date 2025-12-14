@@ -1,0 +1,46 @@
+{
+  "conversation_id": "conv_001",
+  "message_id": "msg_002",
+  "scores": {
+    "relevance": {
+      "score": 0.83,
+      "details": {
+        "keyword_match": 0.8,
+        "semantic_completeness": 0.8,
+        "context_utilization": 0.85,
+        "length_appropriateness": 1.0,
+        "response_length": 324,
+        "query_length": 60
+      }
+    },
+    "hallucination": {
+      "score": 0.653,
+      "details": {
+        "context_consistency": 0.85,
+        "claim_support": 0.3,
+        "self_consistency": 1.0,
+        "grounding": 0.5,
+        "total_claims": 2,
+        "certainty": "balanced"
+      }
+    },
+    "performance": {
+      "score": 0.98,
+      "details": {
+        "latency_ms": 250.0,
+        "latency_score": 1.0,
+        "cost_usd": 9.1e-05,
+        "cost_score": 1.0,
+        "input_tokens": 38,
+        "output_tokens": 48,
+        "total_tokens": 86,
+        "efficiency": 0.8,
+        "cost_per_token": 1.06e-06,
+        "model": "gpt-3.5-turbo"
+      }
+    },
+    "overall": 0.806
+  },
+  "timestamp": "2025-12-14T13:43:50.936213",
+  "evaluation_latency_ms": 0.73
+}

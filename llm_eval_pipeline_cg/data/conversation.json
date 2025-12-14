@@ -1,0 +1,13 @@
+{
+  "conversation_id": "test-001",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is machine learning?"
+    },
+    {
+      "role": "assistant",
+      "content": "Machine learning is a field of AI that allows systems to learn from data."
+    }
+  ]
+}
