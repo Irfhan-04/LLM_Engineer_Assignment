@@ -112,7 +112,7 @@ python main.py \
 
 ## 📁 Project Structure
 
-llm-evaluation-pipeline_c/
+llm-evaluation-pipeline/
 ├── main.py                      # Consolidated pipeline (replaces both old files)
 ├── config.py                    # Configuration
 ├── requirements.txt             # Dependencies
