@@ -20,13 +20,12 @@ class RelevanceEvaluator:
         """Initialize with configuration."""
         self.config = config
         self.logger = logging.getLogger("RelevanceEvaluator")
-        
         # Load semantic similarity model (fast and effective)
         model_name = config.RELEVANCE_MODEL
         self.logger.info(f"Loading relevance model: {model_name}")
         self.model = SentenceTransformer(model_name)
-        self.logger.info("Relevance evaluator initialized")
-        self.embedding_cache = None    
+        self.embedding_cache = None  # ADD THIS LINE
+        self.logger.info("Relevance evaluator initialized")   
 
     def evaluate(
         self, 
