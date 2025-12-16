@@ -34,6 +34,23 @@ class Config:
     ENABLE_EMBEDDING_CACHE: bool = True
     CACHE_SIZE: int = 10000
     
+    # Enhancement settings (optional - used if enhancement modules available)
+    ENABLE_CACHE_BY_DEFAULT = True
+    ENABLE_STATISTICS_BY_DEFAULT = True
+    ENABLE_BATCH_BY_DEFAULT = True
+    
+    # Cache configuration
+    EMBEDDING_CACHE_SIZE = 10000
+    EVALUATION_CACHE_SIZE = 5000
+    CACHE_TTL_SECONDS = 3600
+    
+    # Statistics configuration
+    STATISTICS_WINDOW_SIZE = 1000
+    
+    # Batch configuration
+    DEFAULT_BATCH_SIZE = 32
+    MAX_CONCURRENT_BATCHES = 4
+    
     # Logging
     LOG_LEVEL: str = "INFO"
     LOG_FILE: Optional[str] = "evaluation_pipeline.log"

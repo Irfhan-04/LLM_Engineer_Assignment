@@ -3,8 +3,7 @@
 
 import json
 import time
-from main import LLMEvaluationPipeline as OriginalPipeline
-from enhanced_main import EnhancedLLMEvaluationPipeline
+from main import LLMEvaluationPipeline
 from config import Config
 
 # Load test data
@@ -19,10 +18,16 @@ print("="*60)
 print("PERFORMANCE BENCHMARK: Original vs Enhanced")
 print("="*60)
 
-# Benchmark original
-print("\n1. Testing ORIGINAL pipeline...")
+# Benchmark without enhancements (legacy mode)
+print("\n1. Testing pipeline WITHOUT enhancements...")
 original_times = []
-pipeline_orig = OriginalPipeline(config)
+pipeline_orig = LLMEvaluationPipeline(
+    config, 
+    enable_cache=False,
+    enable_statistics=False,
+    enable_batch=False,
+    verbose=False
+)
 
 for i in range(3):
     start = time.time()
@@ -34,10 +39,16 @@ for i in range(3):
 avg_original = sum(original_times) / len(original_times)
 print(f"  Average: {avg_original:.2f}ms")
 
-# Benchmark enhanced (first run - cache miss)
-print("\n2. Testing ENHANCED pipeline (cache MISS)...")
+# Benchmark with enhancements
+print("\n2. Testing pipeline WITH enhancements (cache MISS)...")
 enhanced_times_miss = []
-pipeline_enh = EnhancedLLMEvaluationPipeline(config, enable_cache=True)
+pipeline_enh = LLMEvaluationPipeline(
+    config,
+    enable_cache=True,
+    enable_statistics=True,
+    enable_batch=True,
+    verbose=False
+)
 
 start = time.time()
 result = pipeline_enh.evaluate_single_response(conversation, context)
