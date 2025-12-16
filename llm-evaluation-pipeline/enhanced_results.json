@@ -1,0 +1,36 @@
+{
+  "evaluation_id": "eval_1765894615245",
+  "message_id": "msg_004",
+  "timestamp": "2025-12-16T14:17:14.217168",
+  "query": "How much faster is it compared to Python 3.10?",
+  "response": "According to the official Python documentation, Python 3.11 is on average 25% faster than Python 3.10, with some operations showing even greater improvements. The speedup comes from several optimizations including faster startup, faster runtime through specialized adaptive interpreter, and improvements to the standard library. Benchmarks show that CPU-intensive tasks can see up to 60% performance gains in specific scenarios.",
+  "relevance": {
+    "relevance_score": 0.804,
+    "query_response_similarity": 0.857,
+    "context_relevance": 0.775,
+    "completeness": 1.0,
+    "key_term_coverage": 0.4,
+    "assessment": "Excellent - Highly relevant and complete"
+  },
+  "hallucination": {
+    "hallucination_risk": 0.591,
+    "factual_accuracy": 0.409,
+    "entailment_score": 0.0,
+    "grounding_score": 0.522,
+    "unsupported_claims_ratio": 0.0,
+    "assessment": "Fair - Some hallucination detected"
+  },
+  "performance": {
+    "generation_latency_ms": null,
+    "estimated_generation_cost_usd": 0.00024,
+    "response_tokens": 79,
+    "context_tokens": 243,
+    "total_tokens": 322,
+    "evaluation_latency_ms": 18970.7,
+    "tokens_per_second": 4.16,
+    "model": "gpt-3.5-turbo",
+    "assessment": "Low cost"
+  },
+  "overall_score": 0.567,
+  "evaluation_time_ms": 18971.53
+}

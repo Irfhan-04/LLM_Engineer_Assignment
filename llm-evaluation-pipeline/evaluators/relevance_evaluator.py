@@ -26,7 +26,8 @@ class RelevanceEvaluator:
         self.logger.info(f"Loading relevance model: {model_name}")
         self.model = SentenceTransformer(model_name)
         self.logger.info("Relevance evaluator initialized")
-    
+        self.embedding_cache = None    
+
     def evaluate(
         self, 
         query: str, 
@@ -84,13 +85,29 @@ class RelevanceEvaluator:
             return self._get_error_result()
     
     def _compute_similarity(self, text1: str, text2: str) -> float:
-        """Compute semantic similarity between two texts."""
-        if not text1 or not text2:
-            return 0.0
-        
-        embeddings = self.model.encode([text1, text2], convert_to_tensor=True)
-        similarity = util.pytorch_cos_sim(embeddings[0], embeddings[1])
-        return float(similarity.item())
+        # Check cache first
+        if self.embedding_cache:
+            emb1 = self.embedding_cache.get(text1)
+            emb2 = self.embedding_cache.get(text2)
+            
+            if emb1 is None:
+                emb1 = self.model.encode(text1, convert_to_tensor=False)
+                self.embedding_cache.set(text1, emb1)
+            if emb2 is None:
+                emb2 = self.model.encode(text2, convert_to_tensor=False)
+                self.embedding_cache.set(text2, emb2)
+            
+            # Compute similarity
+            import numpy as np
+            similarity = np.dot(emb1, emb2) / (
+                np.linalg.norm(emb1) * np.linalg.norm(emb2)
+            )
+            return float(similarity)
+        else:
+            # Original code (no cache)
+            embeddings = self.model.encode([text1, text2], convert_to_tensor=True)
+            similarity = util.pytorch_cos_sim(embeddings[0], embeddings[1])
+            return float(similarity.item())
     
     def _compute_context_relevance(
         self, 
