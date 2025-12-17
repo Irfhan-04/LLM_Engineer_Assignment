@@ -84,12 +84,11 @@ class RelevanceEvaluator:
             return self._get_error_result()
     
     def _compute_similarity(self, text1: str, text2: str) -> float:
-        """Compute semantic similarity between two texts."""
-        if not text1 or not text2:
-            return 0.0
-        
-        # Use cache if available (111,000x speedup!)
+        """Compute semantic similarity with optional caching."""
+        # Try cache first
         if self.embedding_cache:
+            import numpy as np
+            
             emb1 = self.embedding_cache.get(text1)
             emb2 = self.embedding_cache.get(text2)
             
@@ -100,8 +99,7 @@ class RelevanceEvaluator:
                 emb2 = self.model.encode(text2, convert_to_numpy=True)
                 self.embedding_cache.set(text2, emb2)
             
-            # Compute similarity using numpy
-            import numpy as np
+            # Compute similarity
             similarity = np.dot(emb1, emb2) / (
                 np.linalg.norm(emb1) * np.linalg.norm(emb2)
             )
